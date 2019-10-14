@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PoeWorld | Chaos recipe</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
+
+  <style type="text/css">
+    body, html {
+      height: 100vh;
+      width: 100vw;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    body:hover #buttons-wrapper {
+      opacity: 1;
+    }
+
+    .item-image {
+      opacity: 0.5;
+      transition: 0.5s ease-in-out;
+      transition-property: filter, opacity;
+      margin: 0 0.2rem;
+    }
+
+    .item-image.warning {
+      filter: brightness(120%) sepia(90%) hue-rotate(5deg) saturate(500%) contrast(0.7) drop-shadow(0 0 3px #fff);
+      opacity: 1;
+    }
+
+    .item-image.danger {
+      filter: brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8) drop-shadow(0 0 3px #fff);
+      opacity: 1;
+    }
+
+    #buttons-wrapper {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    #settings-button {
+      cursor: pointer;
+    }
+
+    #drag-button {
+      cursor: move;
+      -webkit-app-region: drag;
+    }
+
+    #total-summary {
+      width: 90vh;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 40vh;
+      text-shadow: 0 0 10px #000, 0 0 10px #000;
+    }
+  </style>
+</head>
+<body>
+<div class="d-flex align-items-stretch position-relative w-100 h-100 p-1">
+  <div id="buttons-wrapper">
+    <button id="settings-button" class="btn btn-primary btn-sm">
+      <i class="fas fa-cog"></i>
+    </button>
+    <button id="drag-button" class="btn btn-primary btn-sm">
+      <i class="fas fa-arrows-alt"></i>
+    </button>
+  </div>
+
+  <div id="total-summary"></div>
+  <img id="amulet" class="item-image h-100" src="../../assets/amulet.svg" alt="">
+  <img id="ring" class="item-image h-100" src="../../assets/ring.svg" alt="">
+  <img id="helmet" class="item-image h-100" src="../../assets/helmet.svg" alt="">
+  <img id="bodyArmour" class="item-image h-100" src="../../assets/body-armour.svg" alt="">
+  <img id="glove" class="item-image h-100" src="../../assets/glove.svg" alt="">
+  <img id="belt" class="item-image h-100" src="../../assets/belt.svg" alt="">
+  <img id="boot" class="item-image h-100" src="../../assets/boot.svg" alt="">
+  <img id="hand" class="item-image h-100" src="../../assets/hand.svg" alt="">
+</div>
+</body>
+
+<script src="https://kit.fontawesome.com/34a3ba7eb6.js"></script>
+<script>
+  require('./overlay.js')
+</script>
+</html>

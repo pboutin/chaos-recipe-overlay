@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PoeWorld | Chaos recipe | Settings</title>
+
+  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
+
+  <style type="text/css">
+    body {
+      overflow-y: scroll;
+    }
+
+    .stash-color {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      border: 2px solid #161616;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="p-2">
+  <div class="form-group">
+    <label for="league-input">Overlay size</label>
+    <input type="range" id="overlay-width-input" min="300" max="750" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="league-input">League</label>
+    <input type="text" id="league-input" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="account-input">Account name</label>
+    <input type="text" id="account-input" class="form-control"/>
+  </div>
+
+  <div class="form-group">
+    <label for="session-id-input">Session ID (POESESSID)</label>
+    <input type="text" id="session-id-input" class="form-control"/>
+  </div>
+
+  <div id="tabs" class="form-group">
+    <label>Stash tabs to scan</label>
+  </div>
+</div>
+</body>
+
+<script>
+  require('./settings.js')
+</script>
+</html>

@@ -1,0 +1,8 @@
+directories:
+  output: dist
+  buildResources: build
+win:
+  extraResources:
+    - from: ./build/
+      to: ./../
+electronVersion: 5.0.6
