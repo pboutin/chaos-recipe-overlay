@@ -5,6 +5,7 @@ const settings = require('electron-settings');
 // Services
 const {fetchStashItems} = require('../services/stash-items');
 const {aggregateChaosRecipe} = require('../services/chaos-recipe');
+const {fetchCurrentLeague} = require('../services/active-leagues');
 
 // Constants
 const POLLING_DELAY = 60000; // 1 minute
@@ -20,7 +21,8 @@ const refreshChaosRecipe = async () => {
     if (isWarning) return imageElement.classList.add('warning');
   };
 
-  const {league, account, sessionId, stashIds} = settings.get('user');
+  const {league: leagueSetting, account, sessionId, stashIds} = settings.get('user');
+  const league = await fetchCurrentLeague(leagueSetting);
 
   try {
     const stashItems = await fetchStashItems(stashIds, {league, account, sessionId});

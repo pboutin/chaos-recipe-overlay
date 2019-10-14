@@ -4,6 +4,7 @@ const settings = require('electron-settings');
 
 // Services
 const {fetchStashTabs} = require('../services/stash-tabs');
+const {fetchActiveLeagues} = require('../services/active-leagues');
 
 const refreshStashTabs = async () => {
   const {league, account, sessionId} = settings.get('user');
@@ -70,10 +71,22 @@ overlayWidthInputElement.oninput = ({srcElement: {value}}) => {
   ipcRenderer.send('resizeOverlay', {width: parseInt(value, 10)});
 };
 
-const leagueInputElement = document.getElementById('league-input');
-leagueInputElement.value = settings.get('user.league') || '';
-leagueInputElement.oninput = async ({srcElement: {value}}) => {
+const leagueSelectElement = document.getElementById('league-select');
+fetchActiveLeagues().then((activeLeagues) => {
+  activeLeagues.forEach((league) => {
+    const leagueOption = document.createElement('option');
+    leagueOption.value = league;
+    leagueOption.text = league;
+
+    leagueSelectElement.add(leagueOption);
+  });
+
+  leagueSelectElement.value = settings.get('user.league');
+});
+
+leagueSelectElement.onchange = async ({srcElement: {value}}) => {
   settings.set('user.league', value);
+  settings.set('user.stashIds', []);
   refreshStashTabs();
 };
 
