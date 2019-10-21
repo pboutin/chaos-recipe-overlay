@@ -65,12 +65,6 @@ document.getElementById('tabs').onclick = (event) => {
   settings.set('user.stashIds', selectedStashIds);
 };
 
-const overlayWidthInputElement = document.getElementById('overlay-width-input');
-overlayWidthInputElement.value = settings.get('overlayWidth');
-overlayWidthInputElement.oninput = ({srcElement: {value}}) => {
-  ipcRenderer.send('resizeOverlay', {width: parseInt(value, 10)});
-};
-
 const leagueSelectElement = document.getElementById('league-select');
 fetchActiveLeagues().then((activeLeagues) => {
   activeLeagues.forEach((league) => {
