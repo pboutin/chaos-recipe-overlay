@@ -13,14 +13,13 @@ const POLLING_DELAY = 60000; // 1 minute
 const refreshChaosRecipe = async () => {
   const updateIndicator = (indicatorId, {isDanger, isWarning, totalCount}) => {
     const slotElement = document.getElementById(indicatorId);
-    const imageElement = slotElement.querySelector('img');
     const valueElement = slotElement.querySelector('span');
 
-    imageElement.classList.remove('danger');
-    imageElement.classList.remove('warning');
+    slotElement.classList.remove('danger');
+    slotElement.classList.remove('warning');
 
-    if (isWarning) imageElement.classList.add('warning');
-    if (isDanger) imageElement.classList.add('danger');
+    if (isWarning) slotElement.classList.add('warning');
+    if (isDanger) slotElement.classList.add('danger');
 
     valueElement.textContent = totalCount;
   };
