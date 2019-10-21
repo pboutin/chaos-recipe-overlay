@@ -3,7 +3,6 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const settings = require('electron-settings');
 
 // Constants
-const OVERLAY_RATIO = 9;
 const DEVTOOL_OPTIONS = {mode: 'detach'};
 
 let overlayWindow;
@@ -16,17 +15,13 @@ function initSettings() {
     settings.set(key, value);
   };
 
-  setDefaultSetting('overlayWidth', 450);
   setDefaultSetting('position', {x: 50, y: 50});
 }
 
 function createOverlayWindow() {
-  const width = settings.get('overlayWidth');
-  const height = Math.round(width / OVERLAY_RATIO);
-
   overlayWindow = new BrowserWindow({
-    height,
-    width,
+    height: 70,
+    width: 515,
     x: settings.get('position.x'),
     y: settings.get('position.y'),
     alwaysOnTop: true,
@@ -85,10 +80,4 @@ ipcMain.on('openSettings', () => {
   settingsWindow.on('closed', () => overlayWindow.send('forceChaosRecipeRefresh'));
 
   if (debug) settingsWindow.webContents.openDevTools(DEVTOOL_OPTIONS);
-});
-
-ipcMain.on('resizeOverlay', (_event, {width}) => {
-  const height = Math.round(width / OVERLAY_RATIO);
-  overlayWindow.setSize(width, height);
-  settings.set('overlayWidth', width);
 });

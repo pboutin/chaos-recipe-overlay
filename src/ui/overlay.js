@@ -11,14 +11,17 @@ const {fetchCurrentLeague} = require('../services/active-leagues');
 const POLLING_DELAY = 60000; // 1 minute
 
 const refreshChaosRecipe = async () => {
-  const updateIndicator = (indicatorId, {isDanger, isWarning}) => {
-    const imageElement = document.getElementById(indicatorId);
+  const updateIndicator = (indicatorId, {isDanger, isWarning, totalCount}) => {
+    const slotElement = document.getElementById(indicatorId);
+    const valueElement = slotElement.querySelector('span');
 
-    imageElement.classList.remove('danger');
-    imageElement.classList.remove('warning');
+    slotElement.classList.remove('danger');
+    slotElement.classList.remove('warning');
 
-    if (isDanger) return imageElement.classList.add('danger');
-    if (isWarning) return imageElement.classList.add('warning');
+    if (isWarning) slotElement.classList.add('warning');
+    if (isDanger) slotElement.classList.add('danger');
+
+    valueElement.textContent = totalCount;
   };
 
   const {league: leagueSetting, account, sessionId, stashIds} = settings.get('user');
@@ -36,9 +39,6 @@ const refreshChaosRecipe = async () => {
     updateIndicator('belt', chaosRecipe.belt);
     updateIndicator('ring', chaosRecipe.ring);
     updateIndicator('amulet', chaosRecipe.amulet);
-
-    const totalSummaryElement = document.getElementById('total-summary');
-    totalSummaryElement.innerText = `${chaosRecipe._meta.totalCount}x`;
   } catch (error) {
     console.log("Overlay poll error", error);
   }
