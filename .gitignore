@@ -1,5 +1,2 @@
 node_modules/
-.idea/
-*.iml
-dist/linux-unpacked/
-dist/win-unpacked/
+dist/
