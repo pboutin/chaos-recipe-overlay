@@ -1,5 +1,5 @@
 // Vendor
-const {app, BrowserWindow, ipcMain} = require('electron');
+const {app, BrowserWindow} = require('electron');
 const settings = require('electron-settings');
 
 // Constants
@@ -12,7 +12,7 @@ let debug = process.argv[2] === 'debug';
 function createOverlayWindow() {
   const windowOptions = {
     height: 70,
-    width: 515,
+    width: 450,
     alwaysOnTop: true,
     frame: false,
     transparent: true,
@@ -20,7 +20,7 @@ function createOverlayWindow() {
     webPreferences: {
       nodeIntegration: true
     }
-  }
+  };
 
   if (settings.has('position')) {
     windowOptions.x = settings.get('position.x');
