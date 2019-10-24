@@ -44,10 +44,6 @@ const refreshChaosRecipe = async () => {
   }
 };
 
-document.getElementById('settings-button').onclick = () => {
-  ipcRenderer.send('openSettings');
-};
-
 ipcRenderer.on('forceChaosRecipeRefresh', () => refreshChaosRecipe());
 setInterval(() => refreshChaosRecipe(), POLLING_DELAY);
 refreshChaosRecipe();
