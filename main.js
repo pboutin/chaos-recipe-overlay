@@ -1,5 +1,5 @@
 // Vendor
-const {app, BrowserWindow, ipcMain} = require('electron');
+const {app, BrowserWindow} = require('electron');
 const settings = require('electron-settings');
 
 // Constants
@@ -9,21 +9,10 @@ let overlayWindow;
 let settingsWindow;
 let debug = process.argv[2] === 'debug';
 
-function initSettings() {
-  const setDefaultSetting = (key, value) => {
-    if (settings.has(key)) return;
-    settings.set(key, value);
-  };
-
-  setDefaultSetting('position', {x: 50, y: 50});
-}
-
 function createOverlayWindow() {
-  overlayWindow = new BrowserWindow({
+  const windowOptions = {
     height: 70,
-    width: 515,
-    x: settings.get('position.x'),
-    y: settings.get('position.y'),
+    width: 450,
     alwaysOnTop: true,
     frame: false,
     transparent: true,
@@ -31,7 +20,14 @@ function createOverlayWindow() {
     webPreferences: {
       nodeIntegration: true
     }
-  });
+  };
+
+  if (settings.has('position')) {
+    windowOptions.x = settings.get('position.x');
+    windowOptions.y = settings.get('position.y');
+  }
+
+  overlayWindow = new BrowserWindow(windowOptions);
 
   overlayWindow.loadFile('./src/ui/overlay.html');
 
@@ -47,20 +43,7 @@ function createOverlayWindow() {
   if (debug) overlayWindow.webContents.openDevTools(DEVTOOL_OPTIONS);
 }
 
-app.on('ready', () => {
-  initSettings();
-  createOverlayWindow();
-});
-
-app.on('window-all-closed', () => app.quit());
-
-app.on('activate', () => {
-  if (overlayWindow) return;
-
-  createOverlayWindow();
-});
-
-ipcMain.on('openSettings', () => {
+function createSettingsWindow() {
   settingsWindow = new BrowserWindow({
     width: 400,
     height: 600,
@@ -80,4 +63,11 @@ ipcMain.on('openSettings', () => {
   settingsWindow.on('closed', () => overlayWindow.send('forceChaosRecipeRefresh'));
 
   if (debug) settingsWindow.webContents.openDevTools(DEVTOOL_OPTIONS);
+}
+
+app.on('ready', () => {
+  createOverlayWindow();
+  createSettingsWindow();
 });
+
+app.on('window-all-closed', () => app.quit());
