@@ -28,7 +28,7 @@ const refreshChaosRecipe = async () => {
   };
 
   const updateAppStatus = async (apiStatus) => {
-    const statusElement = document.getElementById('statusIndicator');
+    const statusElement = document.getElementById('status');
     statusElement.textContent = apiStatus ? '' : 'PoE API is down, please wait.';
   }
 
@@ -47,7 +47,7 @@ const refreshChaosRecipe = async () => {
     updateIndicator('belt', chaosRecipe.belt);
     updateIndicator('ring', chaosRecipe.ring);
     updateIndicator('amulet', chaosRecipe.amulet);
-    updateAppStatus(true);
+    updateAppStatus(false);
   } catch (error) {
     updateAppStatus(false);
     console.log("Overlay poll error", error);
