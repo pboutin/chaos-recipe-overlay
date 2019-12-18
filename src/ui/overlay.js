@@ -47,7 +47,7 @@ const refreshChaosRecipe = async () => {
     updateIndicator('belt', chaosRecipe.belt);
     updateIndicator('ring', chaosRecipe.ring);
     updateIndicator('amulet', chaosRecipe.amulet);
-    updateAppStatus(false);
+    updateAppStatus(true);
   } catch (error) {
     updateAppStatus(false);
     console.log("Overlay poll error", error);
