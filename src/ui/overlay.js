@@ -29,7 +29,7 @@ const refreshChaosRecipe = async () => {
 
   const updateAppStatus = async (apiStatus) => {
     const statusElement = document.getElementById('statusIndicator');
-    statusElement.textContent = apiStatus ? '✔️' : '❌'
+    statusElement.textContent = apiStatus ? '✔️' : '❌';
   }
 
   const {league: leagueSetting, account, sessionId, stashIds} = settings.get('user');
@@ -47,9 +47,9 @@ const refreshChaosRecipe = async () => {
     updateIndicator('belt', chaosRecipe.belt);
     updateIndicator('ring', chaosRecipe.ring);
     updateIndicator('amulet', chaosRecipe.amulet);
-    updateAppStatus(true)
+    updateAppStatus(true);
   } catch (error) {
-    updateAppStatus(false)
+    updateAppStatus(false);
     console.log("Overlay poll error", error);
   }
 };
