@@ -40,8 +40,6 @@ function createOverlayWindow() {
     settings.set('position', {x, y});
   });
 
-  overlayWindow.webContents.openDevTools();
-
   if (debug) overlayWindow.webContents.openDevTools();
 }
 
