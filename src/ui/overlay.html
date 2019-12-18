@@ -51,6 +51,13 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
+    #status {
+      color: white;
+      font-size: 13px;
+      position: relative;
+      top: 30px;
+    }
   </style>
   <script src="../services/chaos-recipe.js"></script>
 </head>
@@ -87,6 +94,9 @@
   <div id="hand" class="item-slot">
     <img src="../../assets/hand.svg" alt="">
     <span></span>
+  </div>
+  <div id="status">
+    <span>API: <span id="statusIndicator">...</span></span>
   </div>
 </div>
 </body>

@@ -12,7 +12,7 @@ let debug = process.argv[2] === 'debug';
 function createOverlayWindow() {
   const windowOptions = {
     height: 70,
-    width: 450,
+    width: 500,
     alwaysOnTop: true,
     frame: false,
     transparent: true,
