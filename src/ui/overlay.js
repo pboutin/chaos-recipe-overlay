@@ -29,7 +29,7 @@ const refreshChaosRecipe = async () => {
 
   const updateAppStatus = async (apiStatus) => {
     const statusElement = document.getElementById('statusIndicator');
-    statusElement.textContent = apiStatus ? '✔️' : '❌';
+    statusElement.textContent = apiStatus ? '' : 'PoE API is down, please wait.';
   }
 
   const {league: leagueSetting, account, sessionId, stashIds} = settings.get('user');

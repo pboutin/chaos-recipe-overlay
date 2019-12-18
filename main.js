@@ -11,8 +11,8 @@ let debug = process.argv[2] === 'debug';
 
 function createOverlayWindow() {
   const windowOptions = {
-    height: 70,
-    width: 500,
+    height: 100,
+    width: 450,
     alwaysOnTop: true,
     frame: false,
     transparent: true,
@@ -40,7 +40,9 @@ function createOverlayWindow() {
     settings.set('position', {x, y});
   });
 
-  if (debug) overlayWindow.webContents.openDevTools(DEVTOOL_OPTIONS);
+  overlayWindow.webContents.openDevTools();
+
+  if (debug) overlayWindow.webContents.openDevTools();
 }
 
 function createSettingsWindow() {

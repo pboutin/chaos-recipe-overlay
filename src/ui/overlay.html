@@ -18,8 +18,8 @@
 
     .item-slot {
       position: relative;
-      height: 100%;
-      padding-bottom: 20vh;
+      height: 50%;
+      top: 20%;
     }
 
     .item-slot img {
@@ -42,21 +42,22 @@
 
     .item-slot span {
       position: absolute;
-      bottom: 5vh;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 4px;
-      font-size: 17vh;
+      font-size: 12vh;
       padding: 0 5px;
       left: 50%;
       transform: translateX(-50%);
     }
 
     #status {
-      color: white;
-      font-size: 13px;
-      position: relative;
-      top: 30px;
+      font-size: 13vh;
+      color: red;
+      position: absolute;
+      top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     }
   </style>
   <script src="../services/chaos-recipe.js"></script>
@@ -96,7 +97,7 @@
     <span></span>
   </div>
   <div id="status">
-    <span>API: <span id="statusIndicator">...</span></span>
+    <span id="statusIndicator"></span>
   </div>
 </div>
 </body>
