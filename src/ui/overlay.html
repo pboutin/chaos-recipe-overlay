@@ -18,8 +18,8 @@
 
     .item-slot {
       position: relative;
-      height: 100%;
-      padding-bottom: 20vh;
+      height: 50%;
+      top: 20%;
     }
 
     .item-slot img {
@@ -42,14 +42,23 @@
 
     .item-slot span {
       position: absolute;
-      bottom: 5vh;
       color: #fff;
       background-color: rgba(0, 0, 0, 0.8);
       border-radius: 4px;
-      font-size: 17vh;
+      font-size: 12vh;
       padding: 0 5px;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    #status {
+      font-size: 13vh;
+      color: red;
+      filter: brightness(120%) sepia(80%) hue-rotate(0deg) saturate(1000%) contrast(1) drop-shadow(0 0 3px #666);
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   </style>
   <script src="../services/chaos-recipe.js"></script>
@@ -88,6 +97,7 @@
     <img src="../../assets/hand.svg" alt="">
     <span></span>
   </div>
+  <div id="status"></div>
 </div>
 </body>
 
