@@ -51,6 +51,25 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
+    .options {
+      color: grey;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .options i {
+      -webkit-app-region: no-drag;
+      margin: 2px;
+      font-size: 25vh;
+    }
+    
+    .options i:hover {
+      color: white;
+      cursor: pointer;
+    }
   </style>
   <script src="../services/chaos-recipe.js"></script>
 </head>
@@ -87,6 +106,10 @@
   <div id="hand" class="item-slot">
     <img src="../../assets/hand.svg" alt="">
     <span></span>
+  </div>
+  <div class="options">
+    <i id="open-options-button" title="Open options window" class="fas fa-cog"></i>
+    <i id="force-refresh-button" title="Force refresh" class="fas fa-redo-alt"></i>
   </div>
 </div>
 </body>
