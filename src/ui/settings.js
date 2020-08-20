@@ -99,7 +99,7 @@ sessionIdInputElement.oninput = async ({srcElement: {value}}) => {
 };
 
 const RefreshTimeInputElement = document.getElementById('refresh-time-input');
-RefreshTimeInputElement.value = settings.get('overlay.refreshTime') || 60;
+RefreshTimeInputElement.value = settings.get('overlay.refreshTime') || DEFAULT_REFRESH_TIME;
 RefreshTimeInputElement.oninput = async ({srcElement: {value}}) => {
   settings.set('overlay.refreshTime', value);
 };
