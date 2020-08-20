@@ -5,20 +5,20 @@ const settings = require('electron-settings');
 // Constants
 const DEVTOOL_OPTIONS = {mode: 'detach'};
 
-const OVERLAY_SIZE = [
-  {
+const OVERLAY_SIZE = {
+  large: {
     height: 70,
     width: 460
   },
-  {
+  medium: {
     height: 60,
     width: 400
   },
-  {
+  small: {
     height: 50,
     width: 350
   }
-];
+};
 
 let overlayWindow;
 let settingsWindow;
