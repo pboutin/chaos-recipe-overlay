@@ -98,4 +98,17 @@ sessionIdInputElement.oninput = async ({srcElement: {value}}) => {
   refreshStashTabs();
 };
 
+const RefreshTimeInputElement = document.getElementById('refresh-time-input');
+RefreshTimeInputElement.value = settings.get('overlay.refreshTime') || DEFAULT_REFRESH_TIME;
+RefreshTimeInputElement.oninput = async ({srcElement: {value}}) => {
+  settings.set('overlay.refreshTime', value);
+};
+
+const OverlaySizeSelectElement = document.getElementById('overlay-size-select');
+OverlaySizeSelectElement.value = settings.get('overlay.size') || 1;
+OverlaySizeSelectElement.onchange = async ({srcElement: {value}}) => {
+  settings.set('overlay.size', value);
+  ipcRenderer.send('overlay-size-changed');
+}
+
 refreshStashTabs();

@@ -7,9 +7,6 @@ const {fetchStashItems} = require('../services/stash-items');
 const {aggregateChaosRecipe} = require('../services/chaos-recipe');
 const {fetchCurrentLeague} = require('../services/active-leagues');
 
-// Constants
-const POLLING_DELAY = 60000; // 1 minute
-
 const refreshChaosRecipe = async () => {
   const updateIndicator = (indicatorId, {isDanger, isWarning, totalCount}) => {
     const slotElement = document.getElementById(indicatorId);
@@ -48,5 +45,16 @@ const refreshChaosRecipe = async () => {
 };
 
 ipcRenderer.on('forceChaosRecipeRefresh', () => refreshChaosRecipe());
-setInterval(() => refreshChaosRecipe(), POLLING_DELAY);
+setInterval(() => refreshChaosRecipe(), settings.get('overlay.refreshTime') * 1000 || 60000);
 refreshChaosRecipe();
+
+const ForceRefreshButtonElement = document.getElementById('force-refresh-button');
+ForceRefreshButtonElement.onclick = () => {
+  refreshChaosRecipe();
+}
+
+const OpenOptionsButtonElement = document.getElementById('open-options-button');
+OpenOptionsButtonElement.onclick = () => {
+  ipcRenderer.send('open-options');
+}
+
