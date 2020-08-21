@@ -45,7 +45,7 @@ const refreshChaosRecipe = async () => {
 };
 
 ipcRenderer.on('forceChaosRecipeRefresh', () => refreshChaosRecipe());
-setInterval(() => refreshChaosRecipe(), settings.get('overlay.refreshTime') * 1000 || 60000);
+setInterval(() => refreshChaosRecipe(), settings.get('overlay.refreshTime') * 1000 || 30000);
 refreshChaosRecipe();
 
 const ForceRefreshButtonElement = document.getElementById('force-refresh-button');
