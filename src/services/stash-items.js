@@ -9,6 +9,8 @@ const BASE_URL = 'https://www.pathofexile.com/character-window/get-stash-items';
 const RARE_FRAME_TYPE = 2;
 
 const getTypeFrom = ({icon}) => {
+  icon = atob(icon.split('/')[5]);
+  
   if (/\/BodyArmours\//.test(icon)) return 'bodyArmour';
   if (/\/Helmets\//.test(icon)) return 'helmet';
   if (/\/Gloves\//.test(icon)) return 'glove';
